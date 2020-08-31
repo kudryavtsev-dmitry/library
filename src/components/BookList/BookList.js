@@ -23,17 +23,19 @@ const BookList = () => {
 
   const state = useSelector((state) => state.books);
 
+  const genres = useSelector((state) => state.genres);
+
   const cart = useSelector((state) => state.cart);
 
   const filtBooks = () => {
     const books = state.books;
-    if (state.selectedGenre && !state.filterValue) {
+    if (genres.selectedGenre && !state.filterValue) {
       return books.filter((book) =>
-        book.bookGenres.some((genre) => genre.genreId === state.selectedGenre)
+        book.bookGenres.some((genre) => genre.genreId === genres.selectedGenre)
       );
-    } else if (!state.selectedGenre && state.filterValue) {
+    } else if (!genres.selectedGenre && state.filterValue) {
       return books.filter((book) => book.title.includes(state.filterValue));
-    } else if (!state.selectedGenre && !state.filterValue) {
+    } else if (!genres.selectedGenre && !state.filterValue) {
       return books;
     }
   };
