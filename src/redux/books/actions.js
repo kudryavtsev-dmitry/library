@@ -2,7 +2,7 @@ import {
   LOAD_BOOKS_SUCCESS,
   FILTER_BOOK,
 } from "./actionTypes";
-import { ToastSuccess, ToastError } from "../../components/common/Toasts";
+import { ToastSuccess, ToastError } from "../../common/Toasts";
 
 export const loadBooksSuccess = (books) => ({
   payload: books,

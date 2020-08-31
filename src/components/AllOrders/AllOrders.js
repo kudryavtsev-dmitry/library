@@ -8,7 +8,7 @@ import {
 } from "../../redux/orders/actions";
 import OrdersTable from "./OrdersTable";
 import { CircularProgress } from "@material-ui/core";
-import { ToastSuccess ,ToastError} from "../common/Toasts";
+import { ToastSuccess ,ToastError} from "../../common/Toasts";
 
 const AllOrders = () => {
   const orders = useSelector((state) => state.orders);

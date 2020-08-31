@@ -1,5 +1,5 @@
 import { LOAD_GENRES_SUCCESS, SELECT_GENRE } from "./actionTypes";
-import { ToastSuccess, ToastError } from "../../components/common/Toasts";
+import { ToastSuccess, ToastError } from "../../common/Toasts";
 
 export const loadGenresSuccess = (genres) => ({
   payload: genres,

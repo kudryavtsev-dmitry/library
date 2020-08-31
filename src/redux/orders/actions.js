@@ -5,7 +5,7 @@ import {
   OPEN_RETURNED_ORDERS,
   OPEN_ALL_ORDERS,
 } from "./actionTypes";
-import { ToastSuccess, ToastError } from "../../components/common/Toasts";
+import { ToastSuccess, ToastError } from "../../common/Toasts";
 
 export const getUserOrders = (orders) => ({
   payload: orders,

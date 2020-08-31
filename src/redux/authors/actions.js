@@ -1,5 +1,5 @@
 import { LOAD_AUTHORS_SUCCESS } from "./actionTypes";
-import { ToastSuccess, ToastError } from "../../components/common/Toasts";
+import { ToastSuccess, ToastError } from "../../common/Toasts";
 
 export const loadAuthorsSuccess = (authors) => ({
   payload: authors,
