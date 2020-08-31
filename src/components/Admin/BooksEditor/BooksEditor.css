@@ -1,0 +1,60 @@
+.booksEditor-container {
+    width          : 100%;
+    height         : 100%;
+    display        : flex;
+    justify-content: center;
+
+}
+
+.booksEditor-wrapper {
+    display        : flex;
+    align-items    : center;
+    flex-direction: column;
+    width          : 70%;
+    height: 70%;
+    margin-top: 5%;
+}
+
+
+
+.bookEditorModal-container {
+    height         : 100%;
+    display        : flex;
+    align-items    : center;
+    justify-content: space-between;
+    outline        : none;
+}
+
+.bookEditorModal-paper {
+    border-radius   : 10%;
+    background-color: #d3d7e0;
+    max-width       : 30vw;
+    max-height      : 80vh;
+    width           : 30vw;
+    height          : 80vh;
+    outline         : none;
+}
+
+.bookEditorModal-form {
+    display        : flex;
+    flex-direction : column;
+    align-items    : center;
+    justify-content: center;
+    width          : 100%;
+    height         : 100%;
+}
+
+.bookEditorModal-form div {
+    margin-bottom: 10px;
+    width        : 50%;
+}
+
+.bookEditorModal-form div div {
+    width: 100%;
+}
+.icon-delete span:hover{
+    color:red
+}
+.icon-edit span:hover{
+    color:rgb(0, 255, 115)
+}

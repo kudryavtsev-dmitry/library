@@ -1,0 +1,3 @@
+export const LOAD_GENRES_SUCCESS = "LOAD_GENRES_SUCCESS";
+export const SELECT_GENRE = "SELECT_GENRE";
+

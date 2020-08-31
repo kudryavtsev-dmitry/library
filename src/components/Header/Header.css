@@ -1,0 +1,31 @@
+.header-container {
+  display        : flex;
+  height         : 100%;
+  padding        : 0px 20px;
+  box-sizing     : border-box;
+  background     : #1da7d1;
+  display        : flex;
+  align-items    : center;
+  justify-content: space-between;
+  color          : white;
+  width          : 100%;
+}
+
+.header-userLogin {
+  display    : flex;
+  font-size  : 30px;
+  color      : #1c2a3b;
+  font-weight: 800;
+}
+
+.header-userLogin button {
+  margin-left: 20px;
+}
+
+.header-userLogin button {
+  background-color: #23354b;
+}
+
+.header-userLogin button:hover {
+  background-color: #1c2a3b;
+}

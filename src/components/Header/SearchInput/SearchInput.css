@@ -1,0 +1,15 @@
+.header-search {
+  display: flex;
+}
+.header-icon {
+  position: absolut;
+  background-color: white;
+  color: #1da7d1;
+  font-size: 20px;
+  padding: 5px;
+}
+.header-input {
+  border: none;
+  outline: none;
+  font-size: 20px;
+}

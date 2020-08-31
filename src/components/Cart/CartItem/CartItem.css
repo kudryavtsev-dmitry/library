@@ -1,0 +1,14 @@
+.cart-wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  width: 200px;
+  
+}
+.cart-delite{
+  cursor: pointer;
+}
+.cart-delite:hover{
+  color:#f54542 ;
+}
