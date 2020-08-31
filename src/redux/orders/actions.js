@@ -174,7 +174,6 @@ export const approveReturnedOrder = (orderId, token) => async (dispatch) => {
     );
     const { status } = response;
 
-    console.log(11111, status);
     if (status === 200) {
       dispatch(getAllOrders(token));
       ToastSuccess(`Возврат подтвержден `)

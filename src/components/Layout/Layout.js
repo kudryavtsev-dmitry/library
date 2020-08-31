@@ -23,8 +23,8 @@ const Layout = () => {
         </div>
         <div className="Layout-body-wrapper">
           <Switch>
-            {getRoutes(auth.role).map((route) => (
-              <Route path={route.path} component={route.component} />
+            {getRoutes(auth.role).map((route, index) => (
+              <Route key = {index} path={route.path} component={route.component} />
             ))}
             <Redirect to="/books" />
           </Switch>

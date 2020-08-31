@@ -1,23 +1,19 @@
-import React, { useEffect} from "react";
-import { CircularProgress } from "@material-ui/core";
-import { useSelector, useDispatch } from "react-redux";
+import React, { Component } from "react";
+import { connect } from 'react-redux';
+
 import { loadUsers } from "../../../redux/users/actions";
+import { CircularProgress } from "@material-ui/core";
 import "./UserList.css";
 import UserTable from "./UserTable";
 
-const UserList = () => {
-  const users = useSelector((state) => state.users);
+class UserList extends Component {
 
-  const auth = useSelector((state) => state.auth);
+  componentDidMount() {
+    const { loadUsers, auth } = this.props
+    loadUsers(auth.token)
+  }
 
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(loadUsers(auth.token));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const roleFilter = (roleId) => {
+  roleFilter = (roleId) => {
     switch (roleId) {
       case 1:
         return "админ";
@@ -31,16 +27,29 @@ const UserList = () => {
         return "неизвестная роль";
     }
   };
+  render() {
+    const { users, users: { isLoading } } = this.props
 
-  return users.isLoading ? (
-    <CircularProgress />
-  ) : (
-    <div className="UserList-container">
-      <div className="UserList-wrapper">
-        <UserTable users={users} roleFilter={roleFilter} />
-      </div>
-    </div>
-  );
-};
+    return isLoading ? (
+      <CircularProgress />
+    ) : (
+        <div className="UserList-container">
+          <div className="UserList-wrapper">
+            <UserTable users={users} roleFilter={this.roleFilter} />
+          </div>
+        </div>
+      );
+  }
+}
 
-export default UserList;
+const mapDispatchToProps = dispatch => {
+  return {
+    loadUsers: (token) => dispatch(loadUsers(token))
+  }
+}
+const mapStateToProps = state => ({
+  users: state.users,
+  auth: state.auth
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserList);
