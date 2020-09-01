@@ -60,6 +60,9 @@ const Sidebar = () => {
   if (auth.role === 2) {
     return (
       <LibSidebar
+        getOrdersHandler={getOrdersHandler}
+        goToCart={openPage("/cart")}
+        openBooks={openPage("/books")}
         getAllOrdersHandler={getAllOrdersHandler}
         getReturnerdOrders={getReturnerdOrders}
         getPendingOrders={getPendingOrders}
@@ -78,19 +81,23 @@ const Sidebar = () => {
   else if (auth.role === 3) {
     return (
       <StorekeeperSidebar
+        getOrdersHandler={getOrdersHandler}
+        goToCart={openPage("/cart")}
+        openBooks={openPage("/books")}
         openGenresEditor={openPage("/genres-editor")}
         openAuthorEditor={openPage("/authors-editor")}
-        openBookEditor={openPage("/books-editor")}
       />
     );
   }
   else
     return (
       <AdminSidebar
+        getOrdersHandler={getOrdersHandler}
+        goToCart={openPage("/cart")}
         openUsersList={openPage("/users")}
         openGenresEditor={openPage("/genres-editor")}
         openAuthorEditor={openPage("/authors-editor")}
-        openBookEditor={openPage("/books-editor")}
+        openBooks={openPage("/books")}
         getAllOrdersHandler={getAllOrdersHandler}
         getReturnerdOrders={getReturnerdOrders}
         getPendingOrders={getPendingOrders}
