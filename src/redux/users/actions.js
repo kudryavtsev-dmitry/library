@@ -15,7 +15,6 @@ export const loadUsers = (token) => async (dispatch) => {
       },
     });
     const result = await response.json();
-    console.log(11111, result);
     dispatch(loadUsersSuccess(result));
   } catch (e) {
     console.log("error", e);

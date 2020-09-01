@@ -9,7 +9,8 @@ import {
   Paper,
 } from "@material-ui/core";
 
-const UserTable = ({ users, roleFilter }) => {
+
+const UserTable = ({ users:{users}, roleFilter }) => {
   return (
     <TableContainer component={Paper}>
       <Table aria-label="simple table">
@@ -23,8 +24,8 @@ const UserTable = ({ users, roleFilter }) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {users.users &&
-            users.users.map((user, index) => (
+          {users &&
+            users.map((user, index) => (
               <TableRow key={index}>
                 <TableCell component="th" scope="row">
                   {user.login}

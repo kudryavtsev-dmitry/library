@@ -15,7 +15,6 @@ export const loadGenres = () => async (dispatch) => {
   try {
     const response = await fetch("http://localhost:54407/api/genres");
     const result = await response.json();
-    console.log(11111, result);
     dispatch(loadGenresSuccess(result));
   } catch (e) {
     console.log("error", e);
