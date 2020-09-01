@@ -1,4 +1,3 @@
-import BooksEditor from "..//components/Admin/BooksEditor/BooksEditor";
 import AuthorsEditor from "../components/Admin/AuthorsEditor/AuthorsEditor";
 import GenresEditor from "../components/Admin/GenresEditor/GenresEditor";
 import UserList from "../components/Admin/UserList/UserList";
@@ -21,11 +20,6 @@ export const routeArr = [
         roles: [1, 2],
     },
     {
-        path: '/books-editor',
-        component: BooksEditor,
-        roles: [1, 3],
-    },
-    {
         path: '/authors-editor',
         component: AuthorsEditor,
         roles: [1, 3],
@@ -38,12 +32,12 @@ export const routeArr = [
     {
         path: '/books',
         component: BookList,
-        roles: [4],
+        roles: [1, 2, 3, 4],
     },
     {
         path: '/cart',
         component: Cart,
-        roles: [4],
+        roles: [1,2,3,4],
     },
     {
         path: '/orders',
