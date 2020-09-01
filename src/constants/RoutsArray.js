@@ -42,6 +42,6 @@ export const routeArr = [
     {
         path: '/orders',
         component: Orders,
-        roles: [4],
+        roles: [1,2,3,4],
     },
 ]

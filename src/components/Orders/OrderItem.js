@@ -1,25 +1,13 @@
 import React from "react";
-import { Button } from "@material-ui/core";
+import {Button} from "@material-ui/core";
+import {orderStatus} from "../../constants/orderStatus";
 
-export const OrderItem = ({ title, status, returnBook }) => {
-  const orderStatus = () => {
-    switch (status) {
-      case 1:
-        return "Ожидает подтверждения";
-      case 2:
-        return "Подтвержден";
-      case 3:
-      return "Возвращен"
-      default:
-        return 'неизвестный статус'
-    }
-  };
-
+export const OrderItem = ({title, status, returnBook}) => {
   return (
     <div className="orders-orderContainer">
       <div className="order-title">{title}</div>
-      <span className="order-status">({orderStatus()})</span>
-      <Button onClick={returnBook} variant="contained" color="secondary">
+      <span className="order-status">({orderStatus(status)})</span>
+      <Button onClick={returnBook} disabled={status === 3 && true} variant="contained" color="secondary">
         Отменить заказ
       </Button>
     </div>

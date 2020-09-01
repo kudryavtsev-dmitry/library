@@ -11,6 +11,7 @@ import {loadAuthors} from "../../redux/authors/actions";
 import BooksEditorModal from './BooksEditorModal/BooksEditorModal'
 import DeleteDialog from './DeleteDialog/DeleteDialog'
 import "./BookList.css";
+import {filterBooks} from "../../constants/filterBooks";
 
 class BookList extends Component {
   state = {
@@ -28,20 +29,6 @@ class BookList extends Component {
     loadAuthors()
   }
 
-  filteredBooks = () => {
-    const {books, genres} = this.props
-
-    if (genres.selectedGenre && !books.filterValue) {
-      return books.books.filter((book) =>
-        book.bookGenres.some((genre) => genre.genreId === genres.selectedGenre)
-      );
-    } else if (!genres.selectedGenre && books.filterValue) {
-      return books.books.filter((book) => book.title.includes(books.filterValue));
-    } else if (!genres.selectedGenre && !books.filterValue) {
-      return books.books;
-    }
-  };
-
   addBook = (book) => () => {
     const {cart, addToCart, history} = this.props
     if (cart.selectedBooks.some((el) => el.title === book.title)) {
@@ -52,8 +39,7 @@ class BookList extends Component {
   };
 
   handleOpenModal = (book) => () => {
-    this.setState({modalBook: book});
-    this.setState({modalFlag: true})
+    this.setState({modalBook: book, modalFlag: true});
   };
   handleOpenEditModal = () => () => {
     this.setState({editModalFlag: true});
@@ -66,13 +52,11 @@ class BookList extends Component {
   }
 
   handleChangeMode = (book) => () => {
-    this.setState({editModalFlag: true});
-    this.setState({selectedBook: book});
+    this.setState({editModalFlag: true, selectedBook: book});
   }
 
   handleDialogOpen = (id) => () => {
-    this.setState({deletedId: id});
-    this.setState({openDialog: true});
+    this.setState({deletedId: id, openDialog: true});
   };
 
   handleDialogClose = () => {
@@ -93,20 +77,20 @@ class BookList extends Component {
   render() {
 
     const {books, cart, authors, genres, auth} = this.props
-    const {openDialog,modalFlag,modalBook, selectedBook,editModalFlag } = this.state
+    const {openDialog, modalFlag, modalBook, selectedBook, editModalFlag} = this.state
 
     return (
       <div className="bookList-container">
         <div className="bookList-booksContainer">
-          {books.books &&
-          this.filteredBooks().map((book, index) => (
+          {books &&
+          filterBooks(books, genres).map((book, index) => (
             <Book
               role={auth.role}
               openDialog={this.handleDialogOpen(book.id)}
               handleChangeMode={this.handleChangeMode(book)}
               handleDeleteBook={this.handleDeleteBook(book.id)}
               onClick={this.handleOpenModal(book)}
-              key={index}
+              key={book.id}
               cart={cart.selectedBooks}
               book={book}
               cartClick={this.addBook(book)}
@@ -146,13 +130,11 @@ class BookList extends Component {
   };
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    loadBooks: () => dispatch(loadBooks()),
-    loadAuthors: () => dispatch(loadAuthors()),
-    addToCart: (book) => dispatch(addToCart(book)),
-    deleteBook: (token, id) => dispatch(deleteBook(token, id))
-  }
+const mapDispatchToProps = {
+  loadBooks,
+  loadAuthors,
+  addToCart,
+  deleteBook,
 }
 const mapStateToProps = ({books, cart, authors, genres, auth}) => ({
   genres,
