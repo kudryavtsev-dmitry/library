@@ -47,9 +47,9 @@ const mapDispatchToProps = dispatch => {
     loadUsers: (token) => dispatch(loadUsers(token))
   }
 }
-const mapStateToProps = state => ({
-  users: state.users,
-  auth: state.auth
+const mapStateToProps = ({users, auth}) => ({
+  users,
+  auth
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserList);

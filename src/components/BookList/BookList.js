@@ -1,103 +1,115 @@
-import React, { useEffect, useState } from "react";
-import { Button } from "@material-ui/core";
-import "./BookList.css";
-import { useSelector, useDispatch } from "react-redux";
-import { loadBooks, deleteBook } from "../../redux/books/actions";
-import { addToCart } from "../../redux/cart/actions";
+import React, {Component} from 'react';
+import {Button} from "@material-ui/core";
+import {connect} from "react-redux";
+import {withRouter} from "react-router";
+
+import {loadBooks, deleteBook} from "../../redux/books/actions";
+import {addToCart} from "../../redux/cart/actions";
 import Book from "./Book/Book";
-import { useHistory } from "react-router-dom";
 import BookModal from "./BookModal/BookModal";
-import { loadAuthors } from "../../redux/authors/actions";
+import {loadAuthors} from "../../redux/authors/actions";
 import BooksEditorModal from './BooksEditorModal/BooksEditorModal'
 import DeleteDialog from './DeleteDialog/DeleteDialog'
+import "./BookList.css";
 
-const BookList = () => {
-  const [modalFlag, setModalFlag] = useState(false);
-  const [editModalFlag, setEditModalFlag] = useState(false);
-  const [selectedBook, setSelectedBook] = useState(null);
-  const [modalBook, setModalBook] = useState(false);
-  const [openDialog, setOpenDialog] = useState(false);
-  const [deletedId, setDelitedId] = useState(null);
+class BookList extends Component {
+  state = {
+    modalFlag: false,
+    editModalFlag: false,
+    selectedBook: null,
+    modalBook: false,
+    openDialog: false,
+    deletedId: null
+  }
 
-  const state = useSelector((state) => state.books);
-  const genres = useSelector((state) => state.genres);
-  const cart = useSelector((state) => state.cart);
-  const auth = useSelector((state) => state.auth);
-  const authors = useSelector((state) => state.authors);
+  componentDidMount() {
+    const {loadBooks, loadAuthors} = this.props
+    loadBooks()
+    loadAuthors()
+  }
 
-  const history = useHistory();
+  filteredBooks = () => {
+    const {books, genres} = this.props
 
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(loadBooks());
-    dispatch(loadAuthors());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const filtBooks = () => {
-    const books = state.books;
-    if (genres.selectedGenre && !state.filterValue) {
-      return books.filter((book) =>
+    if (genres.selectedGenre && !books.filterValue) {
+      return books.books.filter((book) =>
         book.bookGenres.some((genre) => genre.genreId === genres.selectedGenre)
       );
-    } else if (!genres.selectedGenre && state.filterValue) {
-      return books.filter((book) => book.title.includes(state.filterValue));
-    } else if (!genres.selectedGenre && !state.filterValue) {
-      return books;
+    } else if (!genres.selectedGenre && books.filterValue) {
+      return books.books.filter((book) => book.title.includes(books.filterValue));
+    } else if (!genres.selectedGenre && !books.filterValue) {
+      return books.books;
     }
   };
 
-  const addBook = (book) => () => {
+  addBook = (book) => () => {
+    const {cart, addToCart, history} = this.props
     if (cart.selectedBooks.some((el) => el.title === book.title)) {
       history.push("./cart");
     } else {
-      dispatch(addToCart(book));
+      addToCart(book);
     }
   };
 
-  const handleOpenModal = (book) => () => {
-    setModalBook(book);
-    setModalFlag(true);
+  handleOpenModal = (book) => () => {
+    this.setState({modalBook: book});
+    this.setState({modalFlag: true})
   };
-  const handleOpenEditModal = () => () => {
-    setEditModalFlag(true);
+  handleOpenEditModal = () => () => {
+    this.setState({editModalFlag: true});
   };
 
-  const handleDeleteBook = () => () => {
-    dispatch(deleteBook(auth.token, deletedId))
-    setOpenDialog(false);
+  handleDeleteBook = () => () => {
+    const {deleteBook, auth} = this.props
+    deleteBook(auth.token, this.state.deletedId)
+    this.setState({openDialog: false})
   }
 
-  const handleChangeMode = (book) => () => {
-    setEditModalFlag(true);
-    setSelectedBook(book)
+  handleChangeMode = (book) => () => {
+    this.setState({editModalFlag: true});
+    this.setState({selectedBook: book});
   }
 
-  const handleDialogOpen = (id) => () => {
-    setDelitedId(id)
-    setOpenDialog(true);
+  handleDialogOpen = (id) => () => {
+    this.setState({deletedId: id});
+    this.setState({openDialog: true});
   };
 
-  const handleDialogClose = () => {
-    setOpenDialog(false);
+  handleDialogClose = () => {
+    this.setState({openDialog: false});
   };
 
-  return (
-    <div className="bookList-container">
-      <div className="bookList-booksContainer">
-        {state.books &&
-          filtBooks().map((book, index) => (
+  handleClearSelectedBook = () => {
+    this.setState({selectedBook: null});
+  }
+
+  handleCloseEditModal = () => {
+    this.setState({editModalFlag: false});
+  }
+  handleCloseModal = () => {
+    this.setState({modalFlag: false});
+  }
+
+  render() {
+
+    const {books, cart, authors, genres, auth} = this.props
+    const {openDialog,modalFlag,modalBook, selectedBook,editModalFlag } = this.state
+
+    return (
+      <div className="bookList-container">
+        <div className="bookList-booksContainer">
+          {books.books &&
+          this.filteredBooks().map((book, index) => (
             <Book
               role={auth.role}
-              openDialog={handleDialogOpen(book.id)}
-              handleChangeMode={handleChangeMode(book)}
-              handleDeleteBook={handleDeleteBook(book.id)}
-              onClick={handleOpenModal(book)}
+              openDialog={this.handleDialogOpen(book.id)}
+              handleChangeMode={this.handleChangeMode(book)}
+              handleDeleteBook={this.handleDeleteBook(book.id)}
+              onClick={this.handleOpenModal(book)}
               key={index}
               cart={cart.selectedBooks}
               book={book}
-              cartClick={addBook(book)}
+              cartClick={this.addBook(book)}
               count={book.count}
               index={index}
               title={book.title}
@@ -106,31 +118,48 @@ const BookList = () => {
               }
             />
           ))}
-        {modalFlag && (
-          <BookModal
-            modalFlag={modalFlag}
-            handleCloseModal={() => setModalFlag(false)}
-            modalBook={modalBook}
+          {modalFlag && (
+            <BookModal
+              modalFlag={modalFlag}
+              handleCloseModal={this.handleCloseModal}
+              modalBook={modalBook}
+            />
+          )}
+          <BooksEditorModal
+            clearSelectedBook={this.handleClearSelectedBook}
+            selectedBook={selectedBook}
+            books={books.books}
+            authors={authors.authors}
+            genres={genres.genres}
+            modalFlag={editModalFlag}
+            handleCloseModal={this.handleCloseEditModal}
           />
-        )}
-        <BooksEditorModal
-          clearSelectedBook={() => setSelectedBook(null)}
-          selectedBook={selectedBook}
-          books={state.books}
-          authors={authors.authors}
-          genres={genres.genres}
-          modalFlag={editModalFlag}
-          handleCloseModal={() => setEditModalFlag(false)}
-        />
-        <DeleteDialog
-          handleDeleteBook={handleDeleteBook()}
-          openDialog={openDialog}
-          handleDialogClose={handleDialogClose}
-        />
+          <DeleteDialog
+            handleDeleteBook={this.handleDeleteBook()}
+            openDialog={openDialog}
+            handleDialogClose={this.handleDialogClose}
+          />
+        </div>
+        <Button onClick={this.handleOpenEditModal()}>Добавить книгу</Button>
       </div>
-      <Button onClick={handleOpenEditModal()}>Добавить книгу</Button>
-    </div>
-  );
-};
+    );
+  };
+}
 
-export default BookList;
+const mapDispatchToProps = dispatch => {
+  return {
+    loadBooks: () => dispatch(loadBooks()),
+    loadAuthors: () => dispatch(loadAuthors()),
+    addToCart: (book) => dispatch(addToCart(book)),
+    deleteBook: (token, id) => dispatch(deleteBook(token, id))
+  }
+}
+const mapStateToProps = ({books, cart, authors, genres, auth}) => ({
+  genres,
+  auth,
+  books,
+  cart,
+  authors
+})
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(BookList));
