@@ -123,9 +123,8 @@ export const approveOrder = (orderId, token) => async (dispatch) => {
 
     if (status === 200) {
       dispatch(getAllOrders(token));
-
     } else {
-      ToastError(`Произошла ошибка ${status}`)
+      ToastError(`Произошла ошибка ${status}`);
     }
   } catch (e) {
     console.log("error", e);
@@ -149,9 +148,9 @@ export const returnUserOrder = (orderId, userId, token) => async (dispatch) => {
     console.log("status", status);
     if (status === 200) {
       dispatch(getOrders(userId, token));
-      ToastSuccess(`Возврат оформлен`)
+      ToastSuccess(`Возврат оформлен`);
     } else {
-      ToastError(`Произошла ошибка ${status}`)
+      ToastError(`Произошла ошибка ${status}`);
     }
   } catch (e) {
     console.log("error", e);
@@ -176,9 +175,9 @@ export const approveReturnedOrder = (orderId, token) => async (dispatch) => {
 
     if (status === 200) {
       dispatch(getAllOrders(token));
-      ToastSuccess(`Возврат подтвержден `)
+      ToastSuccess(`Возврат подтвержден `);
     } else {
-      ToastError(`Произошла ошибка ${status}`)
+      ToastError(`Произошла ошибка ${status}`);
     }
   } catch (e) {
     console.log("error", e);

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { loadUsers } from "../../../redux/users/actions";
 import { CircularProgress } from "@material-ui/core";
 import "./UserList.css";
-import UserTable from "./UserTable";
+import UserTable from "./UserTable/UserTable";
 
 class UserList extends Component {
 

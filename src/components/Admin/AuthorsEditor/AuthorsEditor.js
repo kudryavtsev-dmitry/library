@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { Button } from "@material-ui/core";
+import React, {useState} from "react";
+import {useSelector, useDispatch} from "react-redux";
+import {Button} from "@material-ui/core";
 import "./AuthorsEditor.css";
-import AuthorEditorModal from "./AuthorsEditorModal";
-import AuthorsTable from "./AuthorsTable";
-import { deleteAuthor } from "../../../redux/authors/actions";
+import AuthorEditorModal from "./AuthorEditorModal/AuthorsEditorModal";
+import AuthorsTable from "./AuthorsTable/AuthorsTable";
+import {deleteAuthor} from "../../../redux/authors/actions";
 
 const AuthorsEditor = () => {
   const [modalFlag, setModalFlag] = useState(false);
@@ -31,18 +31,18 @@ const AuthorsEditor = () => {
   return (
     <div className="AuthorsEditor-container">
       <div className="AuthorsEditor-wrapper">
-        <AuthorsTable authors={authors} onClick={handleDeliteAuthor} handleChangeMode={handleChangeMode} />
+        <AuthorsTable authors={authors} onClick={handleDeliteAuthor} handleChangeMode={handleChangeMode}/>
         <div className='button-wrapper'>
           <Button onClick={handleOpenModal()} color="primary" variant="contained">
             Добавить
-        </Button>
+          </Button>
         </div>
       </div>
       <AuthorEditorModal
         clearSelectedAuthor={() => setSelectedAuthor(null)}
         modalFlag={modalFlag}
         handleCloseModal={() => setModalFlag(false)}
-        selectedAuthor={selectedAuthor} />
+        selectedAuthor={selectedAuthor}/>
     </div>
   );
 };

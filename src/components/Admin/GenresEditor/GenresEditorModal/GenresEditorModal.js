@@ -1,10 +1,10 @@
 import React from "react";
 import { Modal } from "@material-ui/core";
 import { Formik, Form } from "formik";
-import CustomField from "../../Registration/CustomField";
+import CustomField from "../../../../constants/CustomField";
 import { Button } from "@material-ui/core";
 import { useSelector, useDispatch } from "react-redux";
-import { addGenre, editGenre } from "../../../redux/genres/actions";
+import { addGenre, editGenre } from "../../../../redux/genres/actions";
 
 const GenresEditorModal = ({ modalFlag, handleCloseModal, selectedGenre, clearSelectedGenre }) => {
   const auth = useSelector((state) => state.auth);

@@ -1,10 +1,10 @@
-import AuthorsEditor from "../components/Admin/AuthorsEditor/AuthorsEditor";
-import GenresEditor from "../components/Admin/GenresEditor/GenresEditor";
-import UserList from "../components/Admin/UserList/UserList";
-import AllOrders from "../components/AllOrders/AllOrders";
-import BookList from "../components/BookList/BookList";
-import Cart from "../components/Cart/Cart";
-import Orders from "../components/Orders/Orders";
+import AuthorsEditor from "../components/Admin/AuthorsEditor";
+import GenresEditor from "../components/Admin/GenresEditor";
+import UserList from "../components/Admin/UserList";
+import AllOrders from "../components/AllOrders";
+import BookList from "../components/BookList";
+import Cart from "../components/Cart";
+import Orders from "../components/Orders";
 
 
 

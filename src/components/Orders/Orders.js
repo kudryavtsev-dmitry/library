@@ -1,7 +1,7 @@
 import React from "react";
 import "./Orders.css";
 import { useSelector, useDispatch } from "react-redux";
-import { OrderItem } from "./OrderItem";
+import { OrderItem } from "./OrderItem/OrderItem";
 import { Button } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 import { returnUserOrder } from "../../redux/orders/actions";

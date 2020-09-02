@@ -2,7 +2,7 @@ import React from "react";
 import "./Registration.css";
 import { Formik, Form } from "formik";
 import { Button } from "@material-ui/core";
-import CustomField from "./CustomField";
+import CustomField from "../../constants/CustomField";
 import { useDispatch } from "react-redux";
 import { registration } from "../../redux/auth/actions";
 import registrationSchema from "./yup";
