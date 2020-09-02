@@ -16,9 +16,11 @@ class AuthorsEditor extends Component {
   handleOpenModal = () => () => {
     this.setState({ modalFlag: true });
   };
+
   handleCloseModal = () => () => {
     this.setState({ modalFlag: false });
   };
+
   handleClearAuthor = () => () => {
     this.setState({ selectedAuthor: null });
   };
@@ -68,6 +70,7 @@ const mapStateToProps = ({ authors, auth }) => ({
   authors,
   auth,
 });
+
 const mapDispatchToProps = {
   deleteAuthor,
 };

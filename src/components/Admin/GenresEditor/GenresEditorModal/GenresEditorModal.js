@@ -1,10 +1,10 @@
 import React from "react";
-import { Modal } from "@material-ui/core";
 import { Formik, Form } from "formik";
 import { CustomField } from "../../../../constants/CustomField";
 import { Button } from "@material-ui/core";
 import { useSelector, useDispatch } from "react-redux";
 import { addGenre, editGenre } from "../../../../redux/genres/actions";
+import { ModalWrapper } from "../../../../common/ModalWrapper";
 
 const GenresEditorModal = ({
   modalFlag,
@@ -26,45 +26,39 @@ const GenresEditorModal = ({
   };
 
   return (
-    <Modal
-      className="bookEditorModal-container"
-      open={modalFlag}
-      onClose={handleCloseModal}
-    >
-      <div className="bookEditorModal-paper">
-        <Formik
-          initialValues={
-            selectedGenre
-              ? {
-                  title: selectedGenre.title,
-                }
-              : {
-                  title: "",
-                }
-          }
-          onSubmit={
-            selectedGenre
-              ? (values) => editGenres(values)
-              : (values) => sendGenre(values)
-          }
-        >
-          {({ isSubmitting }) => (
-            <Form className="bookEditorModal-form">
-              <h3>Добавить жанры</h3>
-              <CustomField required name="title" label="Жанр" type="text" />
-              <Button
-                disabled={isSubmitting}
-                type="submit"
-                variant="contained"
-                color="primary"
-              >
-                Добавить
-              </Button>
-            </Form>
-          )}
-        </Formik>
-      </div>
-    </Modal>
+    <ModalWrapper open={modalFlag} onClose={handleCloseModal}>
+      <Formik
+        initialValues={
+          selectedGenre
+            ? {
+                title: selectedGenre.title,
+              }
+            : {
+                title: "",
+              }
+        }
+        onSubmit={
+          selectedGenre
+            ? (values) => editGenres(values)
+            : (values) => sendGenre(values)
+        }
+      >
+        {({ isSubmitting }) => (
+          <Form className="bookEditorModal-form">
+            <h3>Добавить жанры</h3>
+            <CustomField required name="title" label="Жанр" type="text" />
+            <Button
+              disabled={isSubmitting}
+              type="submit"
+              variant="contained"
+              color="primary"
+            >
+              Добавить
+            </Button>
+          </Form>
+        )}
+      </Formik>
+    </ModalWrapper>
   );
 };
 export default GenresEditorModal;
