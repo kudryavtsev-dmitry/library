@@ -44,7 +44,7 @@ const Sidebar = () => {
     dispatch(openAllOrders());
   };
 
-  const getReturnerdOrders = () => () => {
+  const getReturnedOrders = () => () => {
     history.push("/all-orders");
     dispatch(openReturnedOrders());
   };
@@ -64,7 +64,7 @@ const Sidebar = () => {
         goToCart={openPage("/cart")}
         openBooks={openPage("/books")}
         getAllOrdersHandler={getAllOrdersHandler}
-        getReturnerdOrders={getReturnerdOrders}
+        getReturnedOrders={getReturnedOrders}
         getPendingOrders={getPendingOrders}
       />
     );
@@ -99,7 +99,7 @@ const Sidebar = () => {
         openAuthorEditor={openPage("/authors-editor")}
         openBooks={openPage("/books")}
         getAllOrdersHandler={getAllOrdersHandler}
-        getReturnerdOrders={getReturnerdOrders}
+        getReturnedOrders={getReturnedOrders}
         getPendingOrders={getPendingOrders}
       />
     );

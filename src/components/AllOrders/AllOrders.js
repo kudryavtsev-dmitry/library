@@ -6,7 +6,7 @@ import {
   approveReturnedOrder,
   getAllOrders,
 } from "../../redux/orders/actions";
-import OrdersTable from "./OrdersTable";
+import OrdersTable from "./OrdersTable/OrdersTable";
 import { CircularProgress } from "@material-ui/core";
 import { ToastSuccess ,ToastError} from "../../common/Toasts";
 

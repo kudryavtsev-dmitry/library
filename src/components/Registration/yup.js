@@ -1,5 +1,9 @@
 import * as Yup from "yup";
-import { onlyTextRegExp, loginRegExp, passRegExp } from "../../constants/regExps";
+import {
+  onlyTextRegExp,
+  loginRegExp,
+  passRegExp,
+} from "../../constants/regExps";
 
 const registrationSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email address"),

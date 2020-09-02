@@ -3,7 +3,7 @@ import { Modal } from "@material-ui/core";
 import "./BookModal.css";
 
 const BookModal = ({ modalFlag, handleCloseModal, modalBook }) => {
-  console.log(modalBook);
+  console.log(111, modalBook);
   return (
     <Modal
       className='modal-container'

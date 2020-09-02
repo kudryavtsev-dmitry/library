@@ -1,9 +1,9 @@
-import React from 'react'
-import { useField } from 'formik'
-import { TextField } from '@material-ui/core'
+import React from "react";
+import { useField } from "formik";
+import { TextField } from "@material-ui/core";
 
 const CustomField = ({ ...props }) => {
-  const [field, meta] = useField(props)
+  const [field, meta] = useField(props);
 
   return (
     <TextField
@@ -12,6 +12,6 @@ const CustomField = ({ ...props }) => {
       {...field}
       {...props}
     />
-  )
-}
-export default CustomField
+  );
+};
+export default CustomField;

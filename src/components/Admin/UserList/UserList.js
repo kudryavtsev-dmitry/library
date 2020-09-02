@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { loadUsers } from "../../../redux/users/actions";
 import { CircularProgress } from "@material-ui/core";
 import "./UserList.css";
-import UserTable from "./UserTable";
+import UserTable from "./UserTable/UserTable";
 
 class UserList extends Component {
 
@@ -47,9 +47,9 @@ const mapDispatchToProps = dispatch => {
     loadUsers: (token) => dispatch(loadUsers(token))
   }
 }
-const mapStateToProps = state => ({
-  users: state.users,
-  auth: state.auth
+const mapStateToProps = ({users, auth}) => ({
+  users,
+  auth
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserList);

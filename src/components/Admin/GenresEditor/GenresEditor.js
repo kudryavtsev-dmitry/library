@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Button } from "@material-ui/core";
 import "./GenresEditor.css";
-import GenresEditorModal from "./GenresEditorModal";
-import GenresTable from "./GenresTable";
+import GenresEditorModal from "./GenresEditorModal/GenresEditorModal";
+import GenresTable from "./GenresTable/GenresTable";
 import { deleteGenre } from "../../../redux/genres/actions";
 
 class GenresEditor extends Component {

@@ -13,17 +13,19 @@ const Book = ({
                 openDialog,
                 role
               }) => {
+
+  console.log(book)
   return (
     <>
       <div className="listBooks-bookContainer" key={index}>
         <div className="listBooks-bookImage-container">
           <img className="listBooks-bookImage" src={imageUrl} alt="book" onClick={onClick}/>
           <div className="listBook-bookPrice">{count}шт.</div>
-          {role === 1 || role === 3 &&
+          {role === 1 || role === 3 ?
             <>
               <i onClick={openDialog} className="fa fa-trash-o book-deleteIcon" aria-hidden="true"/>
               <i onClick={handleChangeMode} className="fa fa-pencil book-editIcon" aria-hidden="true"/>
-            </>
+            </> : null
           }
         </div>
         <span>{title}</span>

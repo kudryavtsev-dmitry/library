@@ -7,7 +7,7 @@ const AdminSidebar = ({
   openAuthorEditor,
   getAllOrdersHandler,
   getPendingOrders,
-  getReturnerdOrders,
+  getReturnedOrders,
   openBooks,
   openGenresEditor,
   openUsersList,
@@ -24,7 +24,7 @@ const AdminSidebar = ({
         <Button onClick={getPendingOrders()} variant="contained">
           Ожидают потверждения
         </Button>
-        <Button onClick={getReturnerdOrders()} variant="contained">
+        <Button onClick={getReturnedOrders()} variant="contained">
           Возврат
         </Button>
         <Button onClick={openBooks} variant="contained">

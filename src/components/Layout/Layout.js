@@ -1,8 +1,8 @@
 import React from "react";
-import Sidebar from "../Sidebar/Sidebar";
-import Header from "../Header/Header";
+import Sidebar from "../Sidebar";
+import Header from "../Header";
 import "./Layout.css";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { routeArr } from "../../constants/RoutsArray";
 
@@ -10,9 +10,8 @@ const Layout = () => {
   const auth = useSelector((state) => state.auth);
 
   const getRoutes = (roleId) => {
-    const filteredRoutes = routeArr.filter((route) => route.roles.includes(roleId))
-    return filteredRoutes
-  }
+    return routeArr.filter((route) => route.roles.includes(roleId));
+  };
 
   return (
     <div className="Layout-container">
@@ -24,7 +23,11 @@ const Layout = () => {
         <div className="Layout-body-wrapper">
           <Switch>
             {getRoutes(auth.role).map((route, index) => (
-              <Route key = {index} path={route.path} component={route.component} />
+              <Route
+                key={index}
+                path={route.path}
+                component={route.component}
+              />
             ))}
             <Redirect to="/books" />
           </Switch>

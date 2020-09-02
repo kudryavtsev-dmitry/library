@@ -1,16 +1,16 @@
 import React from "react";
-import { Button } from "@material-ui/core";
+import {Button} from "@material-ui/core";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import LibraryAddCheckIcon from "@material-ui/icons/LibraryAddCheck";
 
 const LibSidebar = ({
-  getAllOrdersHandler,
-  getPendingOrders,
-  getReturnerdOrders,
-  openBooks,
-  goToCart,
-  getOrdersHandler
-}) => {
+                      getAllOrdersHandler,
+                      getPendingOrders,
+                      getReturnedOrders,
+                      openBooks,
+                      goToCart,
+                      getOrdersHandler
+                    }) => {
   return (
     <div className="sidebar-container">
       <div className="sidebar-header">Заказы</div>
@@ -24,7 +24,7 @@ const LibSidebar = ({
         <Button onClick={getPendingOrders()} variant="contained">
           Ожидают потверждения
         </Button>
-        <Button onClick={getReturnerdOrders()} variant="contained">
+        <Button onClick={getReturnedOrders()} variant="contained">
           Возврат
         </Button>
       </div>
@@ -33,7 +33,7 @@ const LibSidebar = ({
           onClick={getOrdersHandler()}
           variant="contained"
           color="primary"
-          startIcon={<LibraryAddCheckIcon />}
+          startIcon={<LibraryAddCheckIcon/>}
         >
           Мои заказы
         </Button>
@@ -41,7 +41,7 @@ const LibSidebar = ({
           onClick={goToCart}
           variant="contained"
           color="default"
-          startIcon={<ShoppingCartIcon />}
+          startIcon={<ShoppingCartIcon/>}
         >
           В корзину
         </Button>
