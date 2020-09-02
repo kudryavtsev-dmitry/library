@@ -2,7 +2,7 @@ import React from "react";
 import { useField } from "formik";
 import { TextField } from "@material-ui/core";
 
-const CustomField = ({ ...props }) => {
+export const CustomField = ({ ...props }) => {
   const [field, meta] = useField(props);
 
   return (
@@ -14,4 +14,3 @@ const CustomField = ({ ...props }) => {
     />
   );
 };
-export default CustomField;

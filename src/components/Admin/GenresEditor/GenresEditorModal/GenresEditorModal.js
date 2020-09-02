@@ -1,12 +1,17 @@
 import React from "react";
 import { Modal } from "@material-ui/core";
 import { Formik, Form } from "formik";
-import CustomField from "../../../../constants/CustomField";
+import { CustomField } from "../../../../constants/CustomField";
 import { Button } from "@material-ui/core";
 import { useSelector, useDispatch } from "react-redux";
 import { addGenre, editGenre } from "../../../../redux/genres/actions";
 
-const GenresEditorModal = ({ modalFlag, handleCloseModal, selectedGenre, clearSelectedGenre }) => {
+const GenresEditorModal = ({
+  modalFlag,
+  handleCloseModal,
+  selectedGenre,
+  clearSelectedGenre,
+}) => {
   const auth = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
@@ -17,7 +22,7 @@ const GenresEditorModal = ({ modalFlag, handleCloseModal, selectedGenre, clearSe
   const editGenres = (values) => {
     dispatch(editGenre(auth.token, values.title, selectedGenre.id));
     handleCloseModal();
-    clearSelectedGenre()
+    clearSelectedGenre();
   };
 
   return (
@@ -28,12 +33,20 @@ const GenresEditorModal = ({ modalFlag, handleCloseModal, selectedGenre, clearSe
     >
       <div className="bookEditorModal-paper">
         <Formik
-          initialValues={selectedGenre ? {
-            title: selectedGenre.title,
-          } : {
-              title: "",
-            }}
-          onSubmit={selectedGenre ? (values) => editGenres(values) : (values) => sendGenre(values)}
+          initialValues={
+            selectedGenre
+              ? {
+                  title: selectedGenre.title,
+                }
+              : {
+                  title: "",
+                }
+          }
+          onSubmit={
+            selectedGenre
+              ? (values) => editGenres(values)
+              : (values) => sendGenre(values)
+          }
         >
           {({ isSubmitting }) => (
             <Form className="bookEditorModal-form">

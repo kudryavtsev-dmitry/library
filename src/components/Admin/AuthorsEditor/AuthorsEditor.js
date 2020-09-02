@@ -1,50 +1,75 @@
-import React, {useState} from "react";
-import {useSelector, useDispatch} from "react-redux";
-import {Button} from "@material-ui/core";
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { Button } from "@material-ui/core";
+
 import "./AuthorsEditor.css";
 import AuthorEditorModal from "./AuthorEditorModal/AuthorsEditorModal";
 import AuthorsTable from "./AuthorsTable/AuthorsTable";
-import {deleteAuthor} from "../../../redux/authors/actions";
+import { deleteAuthor } from "../../../redux/authors/actions";
 
-const AuthorsEditor = () => {
-  const [modalFlag, setModalFlag] = useState(false);
-  const [selectedAuthor, setSelectedAuthor] = useState(null);
-
-  const authors = useSelector((state) => state.authors);
-  const auth = useSelector((state) => state.auth);
-
-  const dispatch = useDispatch()
-
-  const handleOpenModal = () => () => {
-    setModalFlag(true);
+class AuthorsEditor extends Component {
+  state = {
+    modalFlag: false,
+    selectedAuthor: null,
   };
 
-  const handleDeliteAuthor = (id) => () => {
-    dispatch(deleteAuthor(auth.token, id))
-  }
+  handleOpenModal = () => () => {
+    this.setState({ modalFlag: true });
+  };
+  handleCloseModal = () => () => {
+    this.setState({ modalFlag: false });
+  };
+  handleClearAuthor = () => () => {
+    this.setState({ selectedAuthor: null });
+  };
 
-  const handleChangeMode = (authors) => () => {
-    setModalFlag(true);
-    setSelectedAuthor(authors)
-  }
+  handleDeleteAuthor = (id) => () => {
+    console.log(id);
+    const { deleteAuthor, auth } = this.props;
+    deleteAuthor(auth.token, id);
+  };
 
-  return (
-    <div className="AuthorsEditor-container">
-      <div className="AuthorsEditor-wrapper">
-        <AuthorsTable authors={authors} onClick={handleDeliteAuthor} handleChangeMode={handleChangeMode}/>
-        <div className='button-wrapper'>
-          <Button onClick={handleOpenModal()} color="primary" variant="contained">
-            Добавить
-          </Button>
+  handleChangeMode = (author) => () => {
+    this.setState({ modalFlag: true, selectedAuthor: author });
+  };
+
+  render() {
+    const { authors } = this.props;
+    return (
+      <div className="AuthorsEditor-container">
+        <div className="AuthorsEditor-wrapper">
+          <AuthorsTable
+            authors={authors}
+            onClick={this.handleDeleteAuthor}
+            handleChangeMode={this.handleChangeMode}
+          />
+          <div className="button-wrapper">
+            <Button
+              onClick={this.handleOpenModal()}
+              color="primary"
+              variant="contained"
+            >
+              Добавить
+            </Button>
+          </div>
         </div>
+        <AuthorEditorModal
+          clearSelectedAuthor={this.handleClearAuthor}
+          modalFlag={this.state.modalFlag}
+          handleCloseModal={this.handleCloseModal()}
+          selectedAuthor={this.state.selectedAuthor}
+        />
       </div>
-      <AuthorEditorModal
-        clearSelectedAuthor={() => setSelectedAuthor(null)}
-        modalFlag={modalFlag}
-        handleCloseModal={() => setModalFlag(false)}
-        selectedAuthor={selectedAuthor}/>
-    </div>
-  );
+    );
+  }
+}
+
+const mapStateToProps = ({ authors, auth }) => ({
+  authors,
+  auth,
+});
+const mapDispatchToProps = {
+  deleteAuthor,
 };
 
-export default AuthorsEditor;
+export default connect(mapStateToProps, mapDispatchToProps)(AuthorsEditor);

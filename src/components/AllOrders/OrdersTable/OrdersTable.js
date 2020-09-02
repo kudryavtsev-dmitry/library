@@ -10,10 +10,10 @@ import {
   Button,
 } from "@material-ui/core";
 
-const OrdersTable = ({ orders, filteredOrders, allOrderStatus, onClick }) => {
+const OrdersTable = ({ filteredOrders, allOrderStatus, onClick }) => {
   return (
-    <TableContainer component={Paper} className='table-height'>
-      <Table aria-label="simple table" >
+    <TableContainer component={Paper} className="table-height">
+      <Table aria-label="simple table">
         <TableHead>
           <TableRow className="header-row">
             <TableCell>Книга</TableCell>
@@ -37,7 +37,7 @@ const OrdersTable = ({ orders, filteredOrders, allOrderStatus, onClick }) => {
                   disabled={order.status === 2}
                   onClick={onClick(order.status, order.id)}
                   variant="contained"
-                  color='primary'
+                  color="primary"
                 >
                   Подтвердить
                 </Button>
