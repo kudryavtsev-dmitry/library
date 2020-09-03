@@ -1,101 +1,101 @@
 .sidebar-container {
-  background-color: #0d1b2b;
-  color           : #b5b5b5;
-  box-sizing      : border-box;
-  min-width       : 20vw;
-  display         : flex;
-  flex-direction  : column;
-  justify-content : space-between;
-  align-items     : center;
-  min-height      : 100vh;
+    background-color: #0d1b2b;
+    color: #b5b5b5;
+    box-sizing: border-box;
+    min-width: 20vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 100vh;
 }
 
 .sidebar-header {
-  display         : flex;
-  justify-content : center;
-  align-items     : center;
-  height          : 80px;
-  width           : 100%;
-  width           : 100%;
-  background-color: #1c2a3b;
-  color           : #b5b5b5;
-  font-size       : 30px;
-  font-weight     : bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80px;
+    width: 100%;
+    background-color: #1c2a3b;
+    color: #b5b5b5;
+    font-size: 30px;
+    font-weight: bold;
 }
 
 .sidebar-genreList {
-  height: 80%;
-  width : 80%;
+    height: 80%;
+    width: 80%;
 }
 
 .sidebar-genreList ul {
-  margin-top  : 10vh;
-  margin-left : 0;
-  padding-left: 0;
+    margin-top: 10vh;
+    margin-left: 0;
+    padding-left: 0;
 }
 
 .sidebar-genreList li {
-  cursor         : pointer;
-  margin         : 20px 0px;
-  list-style-type: none;
-  font-size      : 30px;
+    cursor: pointer;
+    margin: 20px 0;
+    list-style-type: none;
+    font-size: 30px;
 }
 
 .sidebar-genreList li:hover {
-  color: #1da7d1;
+    color: #1da7d1;
 
 }
 
 .sidebar-genre--active {
-  color: #1da7d1;
+    color: #1da7d1;
 }
 
 .sidebar-button-container {
-  display       : flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 .sidebar-button-container button {
-  margin-top: 5px;
+    margin-top: 5px;
 }
 
 .sidebar-orderButtons {
-  height         : 80%;
-  width          : 80%;
-  display        : flex;
-  flex-direction : column;
-  justify-content: center;
-  align-items    : center;
-  margin-bottom  : 20%;
+    height: 80%;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20%;
 }
 
 .sidebar-orderButtons button {
-  background-color: #1da7d1;
-  width           : 80%;
-  margin-bottom   : 5px;
-  font-weight     : 500;
-  color           : white;
+    background-color: #1da7d1;
+    width: 80%;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: white;
 }
 
 .sidebar-orderButtons button:hover {
-  background-color: #1b94b9;
+    background-color: #1b94b9;
 
 }
 
 .sidebar-adminButtons {
-  height         : 80%;
-  width          : 80%;
-  display        : flex;
-  flex-direction : column;
-  justify-content: center;
-  align-items    : center;
-  margin-bottom  : 20%;
+    height: 80%;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20%;
 }
+
 .sidebar-adminButtons button {
-  background-color: #1b94b9;
-  width: 80%;
-  height: 40px;
-  margin-bottom: 20px;
-  font-weight: 700;
-  color:white;
+    background-color: #1b94b9;
+    width: 80%;
+    height: 40px;
+    margin-bottom: 20px;
+    font-weight: 300;
+    color: white;
 }
