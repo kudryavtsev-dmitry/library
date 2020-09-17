@@ -1,4 +1,5 @@
 export const filterBooks = (books, genres) => {
+  console.log(222, books);
 
   if (genres.selectedGenre && !books.filterValue) {
     return books.books.filter((book) =>
@@ -14,7 +15,8 @@ export const filterBooks = (books, genres) => {
   if (genres.selectedGenre && books.filterValue) {
     return books.books
       .filter((book) =>
-        book.bookGenres.some((genre) => genre.genreId === genres.selectedGenre))
+        book.bookGenres.some((genre) => genre.genreId === genres.selectedGenre)
+      )
       .filter((book) => book.title.includes(books.filterValue));
   }
 };

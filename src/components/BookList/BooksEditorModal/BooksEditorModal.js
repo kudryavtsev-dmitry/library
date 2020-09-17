@@ -7,6 +7,7 @@ import { Button, MenuItem } from "@material-ui/core";
 import { CustomField } from "../../../constants/CustomField";
 import { addBook, updateBook } from "../../../redux/books/actions";
 import { ModalWrapper } from "../../../common/ModalWrapper";
+import { loginOut } from "../../../redux/auth/actions";
 
 const BooksEditorModal = ({
   modalFlag,
@@ -53,13 +54,13 @@ const BooksEditorModal = ({
       bookAuthors: values.authorId.map((id) => {
         return {
           authorId: id,
-          bookId: books.length + 1,
+          bookId: selectedBook.id,
         };
       }),
       bookGenres: values.genreId.map((id) => {
         return {
           genreId: id,
-          bookId: books.length + 1,
+          bookId: selectedBook.id,
         };
       }),
       attachments: [],
@@ -69,7 +70,7 @@ const BooksEditorModal = ({
     handleCloseModal();
     clearSelectedBook();
   };
-
+  console.log(1111, selectedBook);
   return (
     <ModalWrapper open={modalFlag} onClose={handleCloseModal}>
       <Formik
@@ -104,7 +105,7 @@ const BooksEditorModal = ({
             select
             required
             name="authorId"
-            label="ID автора"
+            label="Автор"
             type="number"
             SelectProps={{
               multiple: true,
@@ -120,7 +121,7 @@ const BooksEditorModal = ({
             select
             required
             name="genreId"
-            label="ID жанра"
+            label="Жанр"
             type="number"
             SelectProps={{
               multiple: true,

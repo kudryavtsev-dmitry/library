@@ -9,8 +9,8 @@ import { deleteGenre } from "../../../redux/genres/actions";
 class GenresEditor extends Component {
   state = {
     modalFlag: false,
-    selectedGenre: null
-  }
+    selectedGenre: null,
+  };
 
   handleOpenModal = () => () => {
     this.setState({ modalFlag: true });
@@ -22,24 +22,27 @@ class GenresEditor extends Component {
 
   handleChangeMode = (genre) => () => {
     this.setState({ modalFlag: true });
-    this.setState({ selectedGenre: genre })
-  }
+    this.setState({ selectedGenre: genre });
+  };
 
   handeleClearGenre = () => {
-    this.state({ selectedGenre: null })
-  }
+    this.state({ selectedGenre: null });
+  };
 
   handleCloseModal = () => {
-    this.setState({ modalFlag: false })
-  }
+    this.setState({ modalFlag: false });
+  };
   render() {
-    const { genres } = this.props
-
+    const { genres } = this.props;
 
     return (
       <div className="GenresEditor-container">
         <div className="GenresEditor-wrapper">
-          <GenresTable genres={genres} onClick={this.handleDeliteGenre} handleChangeMode={this.handleChangeMode} />
+          <GenresTable
+            genres={genres}
+            onClick={this.handleDeliteGenre}
+            handleChangeMode={this.handleChangeMode}
+          />
           <div className="button-wrapper">
             <Button
               onClick={this.handleOpenModal()}
@@ -47,7 +50,7 @@ class GenresEditor extends Component {
               variant="contained"
             >
               Добавить
-          </Button>
+            </Button>
           </div>
         </div>
         <GenresEditorModal
@@ -58,17 +61,17 @@ class GenresEditor extends Component {
         />
       </div>
     );
-  };
-}
-const mapDispatchToProps = dispatch => {
-  return {
-    deleteGenre: (token, id) => dispatch(deleteGenre(token, id))
   }
 }
+const mapDispatchToProps = (dispatch) => {
+  return {
+    deleteGenre: (token, id) => dispatch(deleteGenre(token, id)),
+  };
+};
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   genres: state.genres,
-  auth: state.auth
-})
+  auth: state.auth,
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(GenresEditor);

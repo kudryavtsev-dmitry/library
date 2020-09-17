@@ -30,7 +30,7 @@ export const openAllOrders = () => ({
 export const addOrder = (order, token) => async () => {
   try {
     let response = await fetch(
-      "http://localhost:54407/api/orders/place-orders",
+      "http://localhost:5000/api/orders/place-orders",
       {
         method: "POST",
         body: JSON.stringify(order),
@@ -66,7 +66,7 @@ export const getOrders = (id, token) => async (dispatch) => {
   console.log(id);
   try {
     const response = await fetch(
-      `http://localhost:54407/api/orders/user-orders/${id}`,
+      `http://localhost:5000/api/orders/user-orders/${id}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -88,7 +88,7 @@ export const getOrders = (id, token) => async (dispatch) => {
 
 export const getAllOrders = (token) => async (dispatch) => {
   try {
-    const response = await fetch(`http://localhost:54407/api/orders/list`, {
+    const response = await fetch(`http://localhost:5000/api/orders/list`, {
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
@@ -111,7 +111,7 @@ export const getAllOrders = (token) => async (dispatch) => {
 export const approveOrder = (orderId, token) => async (dispatch) => {
   console.log(orderId);
   try {
-    let response = await fetch("http://localhost:54407/api/orders/add-orders", {
+    let response = await fetch("http://localhost:5000/api/orders/add-orders", {
       method: "POST",
       body: JSON.stringify([orderId]),
       headers: {
@@ -134,7 +134,7 @@ export const approveOrder = (orderId, token) => async (dispatch) => {
 export const returnUserOrder = (orderId, userId, token) => async (dispatch) => {
   try {
     let response = await fetch(
-      `http://localhost:54407/api/orders/return-orders/${userId}`,
+      `http://localhost:5000/api/orders/return-orders/${userId}`,
       {
         method: "POST",
         body: JSON.stringify([orderId]),
@@ -161,7 +161,7 @@ export const approveReturnedOrder = (orderId, token) => async (dispatch) => {
   console.log(orderId);
   try {
     let response = await fetch(
-      "http://localhost:54407/api/orders/close-orders",
+      "http://localhost:5000/api/orders/close-orders",
       {
         method: "POST",
         body: JSON.stringify([orderId]),

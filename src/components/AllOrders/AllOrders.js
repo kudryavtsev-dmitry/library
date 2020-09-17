@@ -33,7 +33,7 @@ const AllOrders = () => {
   const allOrderStatus = (status) => {
     switch (status) {
       case 1:
-        return "Подтверждение приема";
+        return "Ожидает подтверждение приема";
       case 2:
         return "Подтвержден";
       case 3:

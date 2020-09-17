@@ -7,9 +7,8 @@ export const loadAuthorsSuccess = (authors) => ({
 });
 
 export const loadAuthors = () => async (dispatch) => {
-  
   try {
-    let response = await fetch("http://localhost:54407/api/authors");
+    let response = await fetch("http://localhost:5000/api/authors");
 
     let result = await response.json();
 
@@ -21,9 +20,8 @@ export const loadAuthors = () => async (dispatch) => {
   }
 };
 export const addAuthor = (token, author) => async (dispatch) => {
-
   try {
-    let response = await fetch("http://localhost:54407/api/authors", {
+    let response = await fetch("http://localhost:5000/api/authors", {
       method: "POST",
       body: JSON.stringify(author),
       headers: {
@@ -33,21 +31,19 @@ export const addAuthor = (token, author) => async (dispatch) => {
     });
     const { status } = response;
     if (status === 200) {
-     dispatch(loadAuthors())
-      ToastSuccess('Автор добавлен')
+      dispatch(loadAuthors());
+      ToastSuccess("Автор добавлен");
     } else {
-      ToastError('Ошибка добавления')
+      ToastError("Ошибка добавления");
     }
-
   } catch (e) {
     console.log("error", e);
   }
 };
 
 export const deleteAuthor = (token, id) => async (dispatch) => {
-
   try {
-    let response = await fetch(`http://localhost:54407/api/authors/${id}`, {
+    let response = await fetch(`http://localhost:5000/api/authors/${id}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -56,23 +52,21 @@ export const deleteAuthor = (token, id) => async (dispatch) => {
     });
     const { status } = response;
     if (status === 200) {
-     dispatch(loadAuthors())
-      ToastSuccess('Автор удален')
+      dispatch(loadAuthors());
+      ToastSuccess("Автор удален");
     } else {
-      ToastError('Ошибка удаления')
+      ToastError("Ошибка удаления");
     }
-
   } catch (e) {
     console.log("error", e);
   }
 };
 
 export const editAuthor = (token, fio, id) => async (dispatch) => {
-
   try {
-    let response = await fetch("http://localhost:54407/api/authors", {
+    let response = await fetch("http://localhost:5000/api/authors", {
       method: "PUT",
-      body: JSON.stringify({id: id, fio: fio}),
+      body: JSON.stringify({ id: id, fio: fio }),
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
@@ -80,12 +74,11 @@ export const editAuthor = (token, fio, id) => async (dispatch) => {
     });
     const { status } = response;
     if (status === 200) {
-     dispatch(loadAuthors())
-      ToastSuccess('Автор изменен')
+      dispatch(loadAuthors());
+      ToastSuccess("Автор изменен");
     } else {
-      ToastError('Ошибка изменения')
+      ToastError("Ошибка изменения");
     }
-
   } catch (e) {
     console.log("error", e);
   }

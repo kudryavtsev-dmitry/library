@@ -13,18 +13,18 @@ const BookModal = ({ modalFlag, handleCloseModal, modalBook }) => {
       />
       <div className="modal-info-wrapper">
         <div>
-          Название: <span>{modalBook.title}</span>{" "}
+          Название: <span key={modalBook.id}>{modalBook.title}</span>{" "}
         </div>
         <div>
           Авторство:
           {modalBook.bookAuthors.map((author) => (
-            <span> {author.author.fio}</span>
+            <span key={modalBook.id}> {author.author.fio}</span>
           ))}{" "}
         </div>
         <div>
           Жанры:
           {modalBook.bookGenres.map((genre) => (
-            <span> {genre.genre.title}</span>
+            <span key={modalBook.id}> {genre.genre.title}</span>
           ))}
         </div>
         <div>

@@ -13,7 +13,7 @@ export const selectGenre = (genre) => ({
 
 export const loadGenres = () => async (dispatch) => {
   try {
-    const response = await fetch("http://localhost:54407/api/genres");
+    const response = await fetch("http://localhost:5000/api/genres");
     const result = await response.json();
     dispatch(loadGenresSuccess(result));
   } catch (e) {
@@ -22,7 +22,7 @@ export const loadGenres = () => async (dispatch) => {
 };
 export const addGenre = (token, genre) => async (dispatch) => {
   try {
-    let response = await fetch("http://localhost:54407/api/genres", {
+    let response = await fetch("http://localhost:5000/api/genres", {
       method: "POST",
       body: JSON.stringify(genre),
       headers: {
@@ -32,10 +32,10 @@ export const addGenre = (token, genre) => async (dispatch) => {
     });
     const { status } = response;
     if (status === 200) {
-      ToastSuccess('Жанр добавлен')
-      dispatch(loadGenres())
+      ToastSuccess("Жанр добавлен");
+      dispatch(loadGenres());
     } else {
-      ToastError('Ошибка добавления')
+      ToastError("Ошибка добавления");
     }
   } catch (e) {
     console.log("error", e);
@@ -43,7 +43,7 @@ export const addGenre = (token, genre) => async (dispatch) => {
 };
 export const deleteGenre = (token, id) => async (dispatch) => {
   try {
-    let response = await fetch(`http://localhost:54407/api/genres/${id}`, {
+    let response = await fetch(`http://localhost:5000/api/genres/${id}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -52,10 +52,10 @@ export const deleteGenre = (token, id) => async (dispatch) => {
     });
     const { status } = response;
     if (status === 200) {
-      ToastSuccess('Жанр удален')
-      dispatch(loadGenres())
+      ToastSuccess("Жанр удален");
+      dispatch(loadGenres());
     } else {
-      ToastError('Ошибка удаления')
+      ToastError("Ошибка удаления");
     }
   } catch (e) {
     console.log("error", e);
@@ -63,9 +63,9 @@ export const deleteGenre = (token, id) => async (dispatch) => {
 };
 export const editGenre = (token, title, id) => async (dispatch) => {
   try {
-    let response = await fetch("http://localhost:54407/api/genres", {
+    let response = await fetch("http://localhost:5000/api/genres", {
       method: "PUT",
-      body: JSON.stringify({id: id, title: title}),
+      body: JSON.stringify({ id: id, title: title }),
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
@@ -73,10 +73,10 @@ export const editGenre = (token, title, id) => async (dispatch) => {
     });
     const { status } = response;
     if (status === 200) {
-      ToastSuccess('Жанр обновлен')
-      dispatch(loadGenres())
+      ToastSuccess("Жанр обновлен");
+      dispatch(loadGenres());
     } else {
-      ToastError('Ошибка обновления')
+      ToastError("Ошибка обновления");
     }
   } catch (e) {
     console.log("error", e);
