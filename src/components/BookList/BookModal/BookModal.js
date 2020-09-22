@@ -3,12 +3,16 @@ import "./BookModal.css";
 import { ModalWrapper } from "../../../common/ModalWrapper";
 
 const BookModal = ({ modalFlag, handleCloseModal, modalBook }) => {
-  console.log(111, modalBook);
+  console.log(11111, modalBook);
   return (
     <ModalWrapper open={modalFlag} onClose={handleCloseModal}>
       <img
         className="modal-image"
-        src="https://cdn.pixabay.com/photo/2014/04/03/10/50/book-311432_960_720.png"
+        src={
+          modalBook.attachments.data
+            ? `data:image/jpeg; base64 , ${modalBook.attachments.data}`
+            : "https://russrevo.ru/seo/img/not-available.png"
+        }
         alt="book"
       />
       <div className="modal-info-wrapper">

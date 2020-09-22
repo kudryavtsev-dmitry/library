@@ -1,4 +1,8 @@
-import { LOAD_GENRES_SUCCESS, SELECT_GENRE } from "./actionTypes";
+import {
+  LOAD_GENRES_SUCCESS,
+  RESET_SELECTED_GENRE,
+  SELECT_GENRE,
+} from "./actionTypes";
 import { ToastSuccess, ToastError } from "../../common/Toasts";
 
 export const loadGenresSuccess = (genres) => ({
@@ -9,6 +13,9 @@ export const loadGenresSuccess = (genres) => ({
 export const selectGenre = (genre) => ({
   payload: genre,
   type: SELECT_GENRE,
+});
+export const resetSelectedGenre = () => ({
+  type: RESET_SELECTED_GENRE,
 });
 
 export const loadGenres = () => async (dispatch) => {

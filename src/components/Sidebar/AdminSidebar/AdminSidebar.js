@@ -12,7 +12,7 @@ const AdminSidebar = ({
   openGenresEditor,
   openUsersList,
   goToCart,
-  getOrdersHandler
+  getOrdersHandler,
 }) => {
   return (
     <div className="sidebar-container">
@@ -22,7 +22,7 @@ const AdminSidebar = ({
           Все заказы
         </Button>
         <Button onClick={getPendingOrders()} variant="contained">
-          Ожидают потверждения
+          Потверждение
         </Button>
         <Button onClick={getReturnedOrders()} variant="contained">
           Возврат

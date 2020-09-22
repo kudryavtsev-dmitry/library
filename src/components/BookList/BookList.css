@@ -11,10 +11,11 @@
 .bookList-booksContainer {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
     box-sizing: border-box;
-
     overflow: auto;
-    width: 80%;
+    width: 100%;
     height: 100%;
 }
 
@@ -24,11 +25,33 @@
 }
 
 .listBooks-bookImage {
-    width: 140px;
+    box-shadow: 11px 13px 23px -4px rgba(0, 0, 0, 0.75);
+    border-radius: 5%;
+    width: 70%;
     height: 180px;
+    min-height: 180px;
+    transition: 1.5s;
+}
+
+.listBooks-bookImage:hover {
+    box-shadow: 0 0 36px 5px rgb(27, 148, 185);
+    border-radius: 5%;
+    width: 90%;
+    height: 210px;
+    min-height: 210px;
+    transform: rotate(360deg);
+}
+
+.listBook-bookTitle {
+    text-align: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .listBooks-bookContainer {
+    width: 170px;
+    min-height: 200px;
+    height: 40%;
     cursor: pointer;
     display: flex;
     flex-direction: column;
@@ -38,6 +61,7 @@
 .listBooks-bookImage-container {
     position: relative;
     width: 100%;
+    height: 100%;
 }
 
 .listBook-bookPrice {
@@ -77,7 +101,7 @@
 .book-editIcon {
     position: absolute;
     font-size: 23px;
-    right: 10px
+    top: 25px
 }
 
 .book-editIcon:hover {
@@ -86,4 +110,20 @@
 
 .book-deleteIcon:hover {
     color: rgb(202, 3, 3)
+}
+
+.bookList-Footer {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+}
+
+.bookList-Footer button {
+    background-color: #23354b;
+    height: 40px;
+}
+
+.bookList-Footer button:hover {
+    background-color: #172432;
+    color: #1da7d1;
 }
