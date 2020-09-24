@@ -9,8 +9,8 @@ import {
   Paper,
 } from "@material-ui/core";
 
-
-const UserTable = ({ users:{users}, roleFilter }) => {
+const UserTable = ({ users: { users }, roleFilter }) => {
+  console.log(users);
   return (
     <TableContainer component={Paper}>
       <Table aria-label="simple table">

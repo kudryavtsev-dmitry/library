@@ -7,12 +7,13 @@
 }
 
 .bookEditorModal-paper {
+    padding: 20px;
     border-radius   : 10%;
     background-color: #d3d7e0;
     max-width       : 30vw;
-    max-height      : 80vh;
+    min-height      : 90vh;
     width           : 30vw;
-    height          : 80vh;
+    height          : 90vh;
     outline         : none;
     display: flex;
     flex-direction: column;
@@ -31,7 +32,7 @@
 
 .bookEditorModal-form div {
     margin-bottom: 10px;
-    width        : 50%;
+    width        : 70%;
 }
 
 .bookEditorModal-form div div {

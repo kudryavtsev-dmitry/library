@@ -17,24 +17,74 @@
   justify-content: center;
   outline: none;
 }
-.modal-image {
-  width: 20vw;
-  height: 40vh;
-}
+
 .modal-info-wrapper {
   display: flex;
   flex-direction: column;
-  width: 60%;
-  margin-top: 40px;
-}
-.modal-info-wrapper div {
-  display: flex;
+  justify-content: center;
   align-items: center;
-  width: 100%;
-  font-weight: bold;
-  margin-top: 20px
+  width: 80%;
+  margin-top: 5px;
 }
-.modal-info-wrapper span {
-  font-weight: 500;
-  margin-left: 20px;
+
+.modal-info-wrapper h3{
+  text-align: center;
+  font-size: 25px;
+  border-bottom: 3px solid #1b94b9;
+  width: 100%;
+  padding-bottom: 5px;
+}
+.modal-info-count {
+  box-sizing: border-box;
+  font-weight: bold;
+  text-align: center;
+  border-bottom: 3px solid #1b94b9;
+  width: 100%;
+  padding-bottom: 10px;
+}
+.BookEditorModal-inputFile{
+  width: 0;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+.BookEditorModal-inputFile + label {
+  width:50%;
+  text-align: center;
+  font-size: 1em;
+  font-weight: 400;
+  color: white;
+  background-color: #1da7d1;
+  border-radius: 5px;
+  display: inline-block;
+  margin: 10px;
+  padding: 5px;
+}
+.BookEditorModal-inputFile:focus + label,
+.BookEditorModal-inputFile + label:hover {
+  background-color: #16809D;
+}
+.BookEditorModal-inputFile + label {
+  cursor: pointer;
+}
+.modal-info-lists{
+  display: flex;
+  justify-content: center;
+}
+.modal-info-lists div{
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+}
+.modal-info-lists div ul{
+  font-weight: normal;
+  height: 100px;
+  overflow: auto;
+  margin: 0 auto;
+  padding-inline-start: 30px;
 }

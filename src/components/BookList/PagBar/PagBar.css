@@ -1,0 +1,29 @@
+.PagBar-pagination-li {
+    display: inline;
+    border-radius: 10%;
+    color: #d3d7e0;
+    cursor: pointer;
+    padding: 5px 10px;
+    background-color: #23354b;
+    margin: 0 1px;
+    font-weight: bold;
+}
+
+.PagBar-pagination-li:hover {
+    border: 2px solid #1b94b9;
+    z-index: 1;
+    color: #1da7d1;
+}
+
+.PagBar-pagination-li_active{
+    display: inline;
+    border-radius: 10%;
+    cursor: pointer;
+    padding: 5px 10px;
+    background-color: #172432;
+    margin: 0 1px;
+    font-weight: bold;
+    border: 2px solid #1b94b9;
+    z-index: 1;
+    color: #1da7d1;
+}
