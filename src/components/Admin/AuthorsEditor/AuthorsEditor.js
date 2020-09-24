@@ -26,7 +26,6 @@ class AuthorsEditor extends Component {
   };
 
   handleDeleteAuthor = (id) => () => {
-    console.log(id);
     const { deleteAuthor, auth } = this.props;
     deleteAuthor(auth.token, id);
   };

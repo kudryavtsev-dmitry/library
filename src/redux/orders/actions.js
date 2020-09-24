@@ -52,18 +52,12 @@ export const addOrder = (order, token) => async () => {
       default:
         ToastSuccess("Заказ оформлен, ожидайте подверждения");
     }
-    console.log("response", status);
-
-    let result = await response.json();
-
-    console.log("RESULT", result);
   } catch (e) {
     console.log("error", e);
   }
 };
 
 export const getOrders = (id, token) => async (dispatch) => {
-  console.log(id);
   try {
     const response = await fetch(
       `http://localhost:5000/api/orders/user-orders/${id}`,
@@ -109,7 +103,6 @@ export const getAllOrders = (token) => async (dispatch) => {
 };
 
 export const approveOrder = (orderId, token) => async (dispatch) => {
-  console.log(orderId);
   try {
     let response = await fetch("http://localhost:5000/api/orders/add-orders", {
       method: "POST",
@@ -145,7 +138,6 @@ export const returnUserOrder = (orderId, userId, token) => async (dispatch) => {
       }
     );
     const { status } = response;
-    console.log("status", status);
     if (status === 200) {
       dispatch(getOrders(userId, token));
       ToastSuccess(`Возврат оформлен`);
@@ -158,7 +150,6 @@ export const returnUserOrder = (orderId, userId, token) => async (dispatch) => {
 };
 
 export const approveReturnedOrder = (orderId, token) => async (dispatch) => {
-  console.log(orderId);
   try {
     let response = await fetch(
       "http://localhost:5000/api/orders/close-orders",

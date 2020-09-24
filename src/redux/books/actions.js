@@ -33,7 +33,6 @@ export const loadBooks = (page) => async (dispatch) => {
   }
 };
 export const addBook = (token, book) => async (dispatch) => {
-  console.log("token", token, "book", book);
   try {
     let response = await fetch("http://localhost:5000/api/books", {
       method: "POST",
@@ -78,7 +77,6 @@ export const deleteBook = (token, id) => async (dispatch) => {
 };
 
 export const updateBook = (token, book) => async (dispatch) => {
-  console.log("token", token, "book", book);
   try {
     let response = await fetch("http://localhost:5000/api/books", {
       method: "PUT",

@@ -9,7 +9,6 @@ import Registration from "./components/Registration";
 
 function App() {
   const isAuth = useSelector((state) => state.auth.isAuth);
-  console.log(isAuth);
   return (
     <div className="app-container">
       <Router>

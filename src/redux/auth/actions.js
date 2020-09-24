@@ -25,7 +25,6 @@ export const auth = (login, password) => async (dispatch) => {
     } else {
       ToastSuccess("Вход выполнен");
       let result = await response.json();
-      console.log(1111, result);
       dispatch(authSuccess(result.role, result.id, result.token, result.login));
       localStorage.setItem("object", JSON.stringify(result));
     }

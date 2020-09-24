@@ -14,7 +14,6 @@ const Book = ({
   role,
   image64,
 }) => {
-  console.log(book);
   return (
     <>
       <div className="listBooks-bookContainer" key={index}>

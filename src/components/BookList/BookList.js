@@ -66,7 +66,6 @@ class BookList extends Component {
   };
 
   handleClearSelectedBook = () => {
-    console.log(234234);
     this.setState({ selectedBook: null });
   };
 

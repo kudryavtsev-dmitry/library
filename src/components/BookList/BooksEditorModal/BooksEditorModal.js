@@ -14,7 +14,6 @@ const BooksEditorModal = ({
   handleCloseModal,
   genres,
   authors,
-  books,
   selectedBook,
   clearSelectedBook,
 }) => {
@@ -25,8 +24,6 @@ const BooksEditorModal = ({
   const [fileName, setFileName] = useState("");
 
   const sendBook = async (values) => {
-    console.log(666, values.photo);
-
     const book = new FormData();
 
     let data = {
@@ -48,8 +45,6 @@ const BooksEditorModal = ({
       ),
       attachments: values.photo ? [...values.photo] : "",
     };
-
-    console.log(data);
 
     for (const key in data) {
       if (key === "attachments") {
@@ -95,7 +90,6 @@ const BooksEditorModal = ({
 
   const handleLoadFiles = (e, setFieldValue) => {
     setFileName(`${e.target.files[0].name} и еще ${e.target.files.length - 1}`);
-    console.log(e.target.files);
     setFieldValue("photo", e.target.files);
   };
 

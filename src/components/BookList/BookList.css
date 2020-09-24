@@ -30,7 +30,7 @@
     width: 70%;
     height: 180px;
     min-height: 180px;
-    transition: 1.5s;
+    transition: .5s;
 }
 
 .listBooks-bookImage:hover {
@@ -39,8 +39,7 @@
     width: 90%;
     height: 210px;
     min-height: 210px;
-    transform: rotate(360deg);
-    transition-delay: 0.3s;
+    transition-delay: 0.1s;
 }
 
 .listBook-bookTitle {
