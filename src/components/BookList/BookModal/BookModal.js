@@ -1,20 +1,13 @@
 import React from "react";
 import "./BookModal.css";
 import { ModalWrapper } from "../../../common/ModalWrapper";
+import { ImageCarousel } from "../ImageCarusel/ImageCarousel";
 
 const BookModal = ({ modalFlag, handleCloseModal, modalBook }) => {
   console.log(11111, modalBook);
   return (
     <ModalWrapper open={modalFlag} onClose={handleCloseModal}>
-      <img
-        className="modal-image"
-        src={
-          modalBook.attachments.data
-            ? `data:image/jpeg; base64 , ${modalBook.attachments.data}`
-            : "https://russrevo.ru/seo/img/not-available.png"
-        }
-        alt="book"
-      />
+      <ImageCarousel attachments={modalBook.attachments} />
       <div className="modal-info-wrapper">
         <div>
           Название: <span key={modalBook.id}>{modalBook.title}</span>{" "}

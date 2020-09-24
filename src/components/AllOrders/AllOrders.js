@@ -53,6 +53,9 @@ const AllOrders = () => {
         return orders.allOrders;
     }
   };
+  if (orders.allOrders.length < 1) {
+    return <div>Заказов нет</div>;
+  }
 
   return orders.isLoading ? (
     <CircularProgress />

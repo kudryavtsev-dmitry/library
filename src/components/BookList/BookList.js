@@ -94,7 +94,7 @@ class BookList extends Component {
           {books.books &&
             filterBooks(books, genres).map((book, index) => (
               <Book
-                image64={book.attachments.data}
+                image64={book.attachments[0].image}
                 role={auth.role}
                 openDialog={this.handleDialogOpen(book.id)}
                 handleChangeMode={this.handleChangeMode(book)}

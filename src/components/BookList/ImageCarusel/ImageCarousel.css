@@ -1,0 +1,38 @@
+.ImageCarousel-wrapper {
+    width: 50%;
+    height: 60%;
+    margin: 0 auto;
+    box-shadow: 0 0 23px -4px rgba(0,0,0,0.75);
+    position: relative;
+}
+
+.ImageCarousel-container {
+    height: 100%;
+    overflow: hidden;
+    background-color: #1b94b9;
+}
+
+.ImageCarousel-track {
+    height: 100%;
+    display: flex;
+    background-color: #42ad03;
+    transition: all  1.2s ease-in-out;
+}
+
+.ImageCarousel-item {
+    height: 100%;
+}
+
+.ImageCarousel-image {
+  height: 100%;
+    width: 100%;
+}
+.ImageCarousel-btnPrev{
+    position: absolute;
+    top:40%;
+}
+.ImageCarousel-btnNext{
+    position: absolute;
+    top:40%;
+    right: 0;
+}

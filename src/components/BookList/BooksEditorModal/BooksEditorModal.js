@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Formik, Form } from "formik";
 import "./BooksEditorModal.css";
 import { useSelector, useDispatch } from "react-redux";
@@ -19,10 +19,13 @@ const BooksEditorModal = ({
   clearSelectedBook,
 }) => {
   const auth = useSelector((state) => state.auth);
+
   const dispatch = useDispatch();
 
+  const [fileName, setFileName] = useState("");
+
   const sendBook = async (values) => {
-    console.log(values);
+    console.log(666, values.photo);
 
     const book = new FormData();
 
@@ -33,7 +36,6 @@ const BooksEditorModal = ({
         values.authorId.map((id) => {
           return {
             authorId: id,
-            bookId: books.length + 1,
           };
         })
       ),
@@ -41,14 +43,20 @@ const BooksEditorModal = ({
         values.genreId.map((id) => {
           return {
             genreId: id,
-            bookId: books.length + 1,
           };
         })
       ),
-      attachments: values.photo,
+      attachments: values.photo ? [...values.photo] : "",
     };
 
+    console.log(data);
+
     for (const key in data) {
+      if (key === "attachments") {
+        for (const file of data[key]) {
+          await book.append(key, file);
+        }
+      }
       await book.append(`${key}`, data[key]);
     }
 
@@ -84,6 +92,12 @@ const BooksEditorModal = ({
     clearSelectedBook();
   };
 
+  const handleLoadFiles = (e, setFieldValue) => {
+    setFileName(`${e.target.files[0].name} и еще ${e.target.files.length - 1}`);
+    console.log(e.target.files);
+    setFieldValue("photo", e.target.files);
+  };
+
   return (
     <ModalWrapper open={modalFlag} onClose={handleCloseModal}>
       <Formik
@@ -112,7 +126,7 @@ const BooksEditorModal = ({
             : (values) => sendBook(values)
         }
       >
-        {({ setFieldValue, initialValues }) => (
+        {({ setFieldValue }) => (
           <Form className="bookEditorModal-form">
             <h3>Добавить книгу</h3>
             <CustomField required name="title" label="Название" type="text" />
@@ -156,9 +170,11 @@ const BooksEditorModal = ({
             </CustomField>
             {!selectedBook && (
               <CustomFileInput
+                fileName={fileName}
+                multiple
                 className="BookEditorModal-inputFile"
                 id="photo"
-                onChange={(e) => setFieldValue("photo", e.target.files[0])}
+                onChange={(e) => handleLoadFiles(e, setFieldValue)}
               />
             )}
 
