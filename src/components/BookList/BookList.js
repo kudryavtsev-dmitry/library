@@ -66,10 +66,12 @@ class BookList extends Component {
   };
 
   handleClearSelectedBook = () => {
+    console.log(234234);
     this.setState({ selectedBook: null });
   };
 
   handleCloseEditModal = () => {
+    this.setState({ selectedBook: null });
     this.setState({ editModalFlag: false });
   };
   handleCloseModal = () => {

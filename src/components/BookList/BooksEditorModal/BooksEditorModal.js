@@ -86,6 +86,7 @@ const BooksEditorModal = ({
       }),
       attachments: [],
     };
+
     dispatch(updateBook(auth.token, book));
 
     handleCloseModal();
@@ -128,7 +129,7 @@ const BooksEditorModal = ({
       >
         {({ setFieldValue }) => (
           <Form className="bookEditorModal-form">
-            <h3>Добавить книгу</h3>
+            {selectedBook ? <h3>Редактировать</h3> : <h3>Добавить книгу</h3>}
             <CustomField required name="title" label="Название" type="text" />
             <CustomField
               required

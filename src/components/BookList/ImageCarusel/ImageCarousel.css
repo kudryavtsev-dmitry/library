@@ -1,5 +1,5 @@
 .ImageCarousel-wrapper {
-    width: 50%;
+    width: 60%;
     height: 60%;
     margin: 0 auto;
     box-shadow: 0 0 23px -4px rgba(0,0,0,0.75);
@@ -21,6 +21,7 @@
 
 .ImageCarousel-item {
     height: 100%;
+    width: 100%;
 }
 
 .ImageCarousel-image {
@@ -28,11 +29,43 @@
     width: 100%;
 }
 .ImageCarousel-btnPrev{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
-    top:40%;
+    top:45%;
+    cursor: pointer;
+    border-radius: 50%;
+    border: none;
+    height: 30px;
+    width: 30px;
+    visibility: hidden;
+    opacity: .6;
 }
 .ImageCarousel-btnNext{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
-    top:40%;
+    top:45%;
     right: 0;
+    cursor: pointer;
+    border-radius: 50%;
+    border: none;
+    height: 30px;
+    width: 30px;
+    visibility: hidden;
+    opacity: .6;
+}
+
+.ImageCarousel-right, .ImageCarousel-left{
+font-size: 20px;
+    visibility: visible;
+
+}
+.ImageCarousel-btnNext:hover{
+    opacity: .9;
+}
+.ImageCarousel-btnPrev:hover{
+    opacity: .9;
 }

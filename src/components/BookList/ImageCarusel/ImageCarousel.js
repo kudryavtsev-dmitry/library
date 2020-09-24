@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./ImageCarousel.css";
+import IconButton from "@material-ui/core/IconButton";
 
 const slidesToShow = 1;
 const slidesToScroll = 1;
@@ -44,8 +45,8 @@ export const ImageCarousel = ({ attachments }) => {
     <div className="ImageCarousel-wrapper">
       <div ref={containerRef} className="ImageCarousel-container">
         <div ref={trackRef} className="ImageCarousel-track">
-          {attachments.map((image) => (
-            <div className="ImageCarousel-item">
+          {attachments.map((image, index) => (
+            <div key={index} className="ImageCarousel-item">
               <img
                 className="ImageCarousel-image"
                 src={
@@ -59,19 +60,26 @@ export const ImageCarousel = ({ attachments }) => {
           ))}
         </div>
       </div>
+
       <button
         className="ImageCarousel-btnPrev"
         onClick={prevBtnClickHandler}
         disabled={pos === 0}
       >
-        prev
+        <i
+          className="fa fa-chevron-left ImageCarousel-left"
+          aria-hidden="true"
+        />
       </button>
       <button
         className="ImageCarousel-btnNext"
         onClick={nextBtnClickHandler}
         disabled={pos <= -(itemsCount - slidesToShow) * itemWidth}
       >
-        next
+        <i
+          className="fa fa-chevron-right ImageCarousel-right"
+          aria-hidden="true"
+        />
       </button>
     </div>
   );
