@@ -23,8 +23,6 @@ export const loadBooks = (page) => async (dispatch) => {
     let response = await fetch(`http://localhost:5000/api/books/${page}`);
     let result = await response.json();
 
-    console.log(result);
-
     dispatch(
       loadBooksSuccess(result.books, result.totalCount, result.currentPage)
     );

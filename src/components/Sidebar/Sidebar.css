@@ -23,25 +23,57 @@
 }
 
 .sidebar-genreList {
-    height: 80%;
-    width: 80%;
+    display: flex;
+    justify-content: center;
+    height: 70%;
+    width: 100%;
 }
 
 .sidebar-genreList ul {
-    margin-top: 10vh;
-    margin-left: 0;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    margin-left: 20%;
+    margin-right: 10%;
     padding-left: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+
 }
 
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 6px 6px 15px rgb(38, 44, 72), inset -6px -6px 15px rgb(48, 62, 95);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgb(94, 209, 238);
+}
+
+
 .sidebar-genreList li {
+    position: relative;
+    min-height: 30px;
     cursor: pointer;
-    margin: 20px 0;
+    display: inline-block;
+    margin-top: 10px;
+    margin-right: 20px;
+    text-align: left;
     list-style-type: none;
-    font-size: 30px;
+    overflow-x: hidden;
+    white-space: nowrap;
+    font-size: 20px;
+    text-overflow: ellipsis;
 }
 
 .sidebar-genreList li:hover {
     color: #1da7d1;
+    overflow: visible;
 
 }
 
@@ -98,4 +130,11 @@
     margin-bottom: 20px;
     font-weight: 300;
     color: white;
+}
+.sidebar-adminButtons button:hover{
+    background-color: #18728d;
+}
+
+.sidebar-allGenres-li {
+    color: #3f51b5;
 }

@@ -12,8 +12,6 @@ export const loadAuthors = () => async (dispatch) => {
 
     let result = await response.json();
 
-    console.log("done");
-
     dispatch(loadAuthorsSuccess(result));
   } catch (e) {
     console.log("error", e);

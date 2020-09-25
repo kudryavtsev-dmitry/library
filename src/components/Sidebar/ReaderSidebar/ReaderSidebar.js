@@ -15,6 +15,12 @@ const ReaderSidebar = ({
       <div className="sidebar-header">Жанры</div>
       <div className="sidebar-genreList">
         <ul>
+          <li
+            onClick={selectGenreHandler(null)}
+            className="sidebar-allGenres-li"
+          >
+            Все жанры
+          </li>
           {genres.genres &&
             genres.genres.map((genre, index) => (
               <MenuItem

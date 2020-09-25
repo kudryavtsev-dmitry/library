@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./ImageCarousel.css";
-import IconButton from "@material-ui/core/IconButton";
 
 const slidesToShow = 1;
 const slidesToScroll = 1;

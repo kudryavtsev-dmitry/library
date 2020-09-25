@@ -11,6 +11,9 @@ import {
 } from "@material-ui/core";
 
 const OrdersTable = ({ filteredOrders, allOrderStatus, onClick }) => {
+  if (filteredOrders().length < 1) {
+    return <div>Пока ничего нет</div>;
+  }
   return (
     <TableContainer component={Paper} className="table-height">
       <Table aria-label="simple table">

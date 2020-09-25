@@ -139,13 +139,15 @@ class BookList extends Component {
             loadBooks={loadBooks}
             page={books.currentPage}
           />
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={this.handleOpenEditModal()}
-          >
-            Добавить книгу
-          </Button>
+          {(auth.role === 1 || auth.role === 3) && (
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={this.handleOpenEditModal()}
+            >
+              Добавить книгу
+            </Button>
+          )}
         </div>
       </div>
     );
